@@ -1,0 +1,18 @@
+1. WebSockets for Real-Time Updates
+Why: Reduces latency and bandwidth usage by pushing updates to clients only when necessary, rather than frequent polling.
+How: Integrate a WebSocket server that broadcasts updates to connected clients whenever a user's score is updated.
+2. Rate Limiting on Score Update Endpoint
+Why: Prevents abuse and ensures that users cannot spam the endpoint to unfairly increase their scores.
+How: Implement rate limiting middleware (e.g., using express-rate-limit in an Express.js application).
+3. Caching with Redis
+Why: Improves performance by storing the top 10 scores in memory, reducing database queries.
+How: Set up a Redis instance and update the cache whenever a user's score changes. Use the cache for the GET /api/score/top endpoint.
+4. Enhanced Security Measures
+Why: To ensure that only authenticated and authorized users can update their scores.
+How: Implement JWT-based authentication and validate tokens on each request to sensitive endpoints.
+5. Monitoring and Alerts
+Why: Quickly detect and respond to potential attacks or malfunctions.
+How: Use tools like Prometheus and Grafana for monitoring, and set up alerts for unusual patterns, such as a spike in score update requests.
+6. Data Validation and Sanitization
+Why: Prevent SQL injection, XSS, and other common vulnerabilities.
+How: Use libraries like express-validator to validate and sanitize incoming data.
